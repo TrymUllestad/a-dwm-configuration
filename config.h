@@ -49,10 +49,11 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 #include "fibonacci.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",	tile },    /* first entry is default */
-	{ "><>",	NULL },    /* no layout function means floating behavior */
+	{ "[]=",	tile 	}, /* first entry is default */
+	{ "><>",	NULL 	}, /* no layout function means floating behavior */
 	{ "[M]",	monocle }, /* master gets fullscreened */
-	{ "[@]",	spiral },  /* stack spiral inwards like a fibonacci spiral */
+	{ "[]]",	deck	}, /* master + monocle on client stack */
+	{ "[@]",	spiral 	}, /* stack spiral inwards like a fibonacci spiral */
 	{ "[\\]",	dwindle }, /* fibonacci spiral dwindles to bottom left */
 };
 
@@ -111,8 +112,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      	setlayout,      {.v = &layouts[0]} 	},
 	{ MODKEY,                       XK_n,      	setlayout,      {.v = &layouts[1]} 	},
 	{ MODKEY,                       XK_m,      	setlayout,      {.v = &layouts[2]} 	},
-	{ MODKEY,                       XK_f,      	setlayout,      {.v = &layouts[3]} 	},
-	{ MODKEY,                       XK_d,      	setlayout,      {.v = &layouts[4]} 	},
+	{ MODKEY,                       XK_d,      	setlayout,      {.v = &layouts[3]} 	},
+	{ MODKEY,                       XK_f,      	setlayout,      {.v = &layouts[4]} 	},
+	{ MODKEY|ShiftMask,		XK_d,      	setlayout,      {.v = &layouts[5]} 	},
 	{ MODKEY,                       XK_l,      	focusmon,       {.i = -1 } 		},
 	{ MODKEY,                       XK_s,      	focusmon,       {.i = +1 } 		},
 	{ MODKEY|ShiftMask,             XK_l,      	tagmon,         {.i = -1 } 		},
