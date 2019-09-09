@@ -197,6 +197,7 @@ static void expose(XEvent *e);
 static void focus(Client *c);
 static void focusin(XEvent *e);
 static void focusmon(const Arg *arg);
+static void focusmaster(const Arg *arg);
 static void focusstack(const Arg *arg);
 static Atom getatomprop(Client *c, Atom prop);
 static int getrootptr(int *x, int *y);
@@ -796,7 +797,7 @@ deck(Monitor *m) {
 	if(n > m->nmaster) {
 		mw = m->nmaster ? m->ww * m->mfact : 0;
 		ns = m->nmaster > 0 ? 2 : 1;
-		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n - m->nmaster);
+		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[]%d", n - m->nmaster);
 	} else {
 		mw = m->ww;
 		ns = 1;
@@ -992,6 +993,12 @@ focusmon(const Arg *arg)
 	unfocus(selmon->sel, 0);
 	selmon = m;
 	focus(NULL);
+}
+
+void
+focusmaster(const Arg *arg)
+{
+	focus(nexttiled(selmon->clients));
 }
 
 void

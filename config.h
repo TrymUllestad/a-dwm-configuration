@@ -4,12 +4,12 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx	    = 5;	/* gaps between windows */
+static const unsigned int gappx	    = 4;	/* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
+static const int showsystray        = 1;	/* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Inconsolata-g:size=12" };
@@ -53,8 +53,8 @@ static const Layout layouts[] = {
 	{ "><>",	NULL 	}, /* no layout function means floating behavior */
 	{ "[M]",	monocle }, /* master gets fullscreened */
 	{ "[]]",	deck	}, /* master + monocle on client stack */
-	{ "[@]",	spiral 	}, /* stack spiral inwards like a fibonacci spiral */
 	{ "[\\]",	dwindle }, /* fibonacci spiral dwindles to bottom left */
+	{ "[@]",	spiral 	}, /* stack spiral inwards like a fibonacci spiral */
 };
 
 /* key definitions */
@@ -93,6 +93,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_space,  	zoom,           {0}			},
 	{ MODKEY|ShiftMask,             XK_space,  	togglefloating, {0}			},
 	{ MODKEY|ShiftMask,        	XK_b,      	togglebar,      {0}			},
+	{ MODKEY,                       XK_m,      	focusmaster,    {0}			},
 	{ MODKEY,                       XK_o,      	focusstack,     {.i = +1 }		},
 	{ MODKEY,                       XK_comma,  	focusstack,     {.i = -1 }		},
 	{ MODKEY|ShiftMask,		XK_o,      	movestack,	{.i = +1 }		},
@@ -111,14 +112,14 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_0,      	tag,            {.ui = ~0 }		},
 	{ MODKEY,                       XK_t,      	setlayout,      {.v = &layouts[0]} 	},
 	{ MODKEY,                       XK_n,      	setlayout,      {.v = &layouts[1]} 	},
-	{ MODKEY,                       XK_m,      	setlayout,      {.v = &layouts[2]} 	},
+	{ MODKEY|ShiftMask,		XK_m,      	setlayout,      {.v = &layouts[2]} 	},
 	{ MODKEY,                       XK_d,      	setlayout,      {.v = &layouts[3]} 	},
 	{ MODKEY,                       XK_f,      	setlayout,      {.v = &layouts[4]} 	},
-	{ MODKEY|ShiftMask,		XK_d,      	setlayout,      {.v = &layouts[5]} 	},
-	{ MODKEY,                       XK_l,      	focusmon,       {.i = -1 } 		},
-	{ MODKEY,                       XK_s,      	focusmon,       {.i = +1 } 		},
-	{ MODKEY|ShiftMask,             XK_l,      	tagmon,         {.i = -1 } 		},
-	{ MODKEY|ShiftMask,             XK_s,      	tagmon,         {.i = +1 } 		},
+	{ MODKEY|ShiftMask,		XK_f,      	setlayout,      {.v = &layouts[5]} 	},
+	{ MODKEY,                       XK_aring,      	focusmon,       {.i = -1 } 		},
+	{ MODKEY,                       XK_period,	focusmon,       {.i = +1 } 		},
+	{ MODKEY|ShiftMask,             XK_aring,      	tagmon,         {.i = -1 } 		},
+	{ MODKEY|ShiftMask,             XK_period,	tagmon,         {.i = +1 } 		},
 	{ MODKEY,			XK_Down,	moveresize,	{.v = (int []){ 0, 20, 0, 0 }}	},
 	{ MODKEY,			XK_Up,		moveresize,	{.v = (int []){ 0, -20, 0, 0 }}	},
 	{ MODKEY,			XK_Right,	moveresize,	{.v = (int []){ 20, 0, 0, 0 }}	},
