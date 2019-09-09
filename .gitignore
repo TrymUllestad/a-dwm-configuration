@@ -2,3 +2,4 @@ lfc/
 histpatches
 *.diff
 dwm
+dwm.o
