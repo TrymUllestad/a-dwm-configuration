@@ -5,6 +5,8 @@ My configuration changes the default key bindings and add functionality through 
 You might find the key bindings to be weird and seemingly randomly placed; this is because my keyboard uses a norwegian-dvorak layout. 
 I hope to add comments to some of the bindings to make them more qwerty-friendly; other bindings are set based on which command they execute (mod+t for Tiling mode).
 
+dwm requires the Xlib header package and make to compile, and some keybindings use pamixer and light to change audio and screen brightness.
+
 Underneath is the rest of the original README from the vanilla dwm.
 
 dwm - dynamic window manager
