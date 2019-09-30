@@ -37,6 +37,8 @@ static const Rule rules[] = {
 	{ "Gimp",		NULL,		NULL,	0,		1,		-1 },
 	{ "Firefox",		NULL,		NULL,	1,		0,		-1 },
 	{ "discord",		NULL,		NULL,	2,		0,		-1 },
+	{ "Wine",		"battle.net.exe",NULL,	1 << 1,		1,		-1 },
+	{ "Wine",		"wow.exe",	NULL,	1 << 1,		1,		-1 },
 	{ "STM32CubeIDE",	NULL,		NULL,	1 << 7,		0,		-1 },
 	{ "MATLAB R2019a - academic use", NULL,	NULL,	1 << 8,		0,		-1 },
 };

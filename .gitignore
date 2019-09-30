@@ -1,5 +1,7 @@
 lfc/
 histpatches
+*.orig
+*.rej
 *.diff
-dwm
 *.o
+dwm
