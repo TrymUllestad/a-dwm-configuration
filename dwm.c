@@ -217,6 +217,7 @@ static void motionnotify(XEvent *e);
 static void movemouse(const Arg *arg);
 static void moveplace(const Arg *arg);
 static void moveresize(const Arg *arg);
+static void movesnap(const Arg *arg);
 static Client *nexttiled(Client *c);
 static void pop(Client *);
 static void propertynotify(XEvent *e);
@@ -1442,6 +1443,38 @@ nexttiled(Client *c)
 {
 	for (; c && (c->isfloating || !ISVISIBLE(c)); c = c->next);
 	return c;
+}
+
+void
+movesnap(const Arg *arg)
+{
+	Client *c;
+	int nh, nw, nx, ny;
+	c = selmon->sel;
+	if (!c || (arg->ui >= 9))
+		 return;
+	if (selmon->lt[selmon->sellt]->arrange && !c->isfloating)
+		togglefloating(NULL);
+/*	nh = (selmon->wh) - (c->bw * 2);
+	nw = (selmon->ww) - (c->bw * 2);
+*/	nh = c->h;
+	nw = c->w;
+	nx = (arg->ui % 3) -1;
+	ny = (arg->ui / 3) -1;
+	if (nx < 0)
+		nx = selmon->wx;
+	else if(nx > 0)
+		nx = selmon->wx + selmon->ww - nw - c->bw*2;
+	else
+		nx = selmon->wx + (selmon->ww - nw)/2 - c->bw;
+	if (ny <0)
+		ny = selmon->wy;
+	else if(ny > 0)
+		ny = selmon->wy + selmon->wh - nh - c->bw*2;
+	else
+		ny = selmon->wy + (selmon->wh - nh)/2 - c->bw;
+	resize(c, nx, ny, nw, nh, True);
+	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, nw/2, nh/2);
 }
 
 void
