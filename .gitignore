@@ -1,5 +1,8 @@
 lfc/
-histpatches
+patches/
+.gitignore
 *.diff
 dwm
 *.o
+std_config.h
+config.h

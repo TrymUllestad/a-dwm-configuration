@@ -1427,7 +1427,8 @@ moveplace(const Arg *arg)
 }
 
 static void
-moveresize(const Arg *arg) {
+moveresize(const Arg *arg) 
+{
 	XEvent ev;
 	Monitor *m = selmon;
 
@@ -1449,32 +1450,26 @@ void
 movesnap(const Arg *arg)
 {
 	Client *c;
-	int nh, nw, nx, ny;
+	int nx, ny;
 	c = selmon->sel;
-	if (!c || (arg->ui >= 9))
+	if (!c || (arg->ui >= 9) || !c->isfloating)
 		 return;
-	if (selmon->lt[selmon->sellt]->arrange && !c->isfloating)
-		togglefloating(NULL);
-/*	nh = (selmon->wh) - (c->bw * 2);
-	nw = (selmon->ww) - (c->bw * 2);
-*/	nh = c->h;
-	nw = c->w;
 	nx = (arg->ui % 3) -1;
 	ny = (arg->ui / 3) -1;
 	if (nx < 0)
 		nx = selmon->wx;
 	else if(nx > 0)
-		nx = selmon->wx + selmon->ww - nw - c->bw*2;
+		nx = selmon->wx + selmon->ww - c->w - c->bw*2;
 	else
-		nx = selmon->wx + (selmon->ww - nw)/2 - c->bw;
+		nx = selmon->wx + (selmon->ww - c->w)/2 - c->bw;
 	if (ny <0)
 		ny = selmon->wy;
 	else if(ny > 0)
-		ny = selmon->wy + selmon->wh - nh - c->bw*2;
+		ny = selmon->wy + selmon->wh - c->h - c->bw*2;
 	else
-		ny = selmon->wy + (selmon->wh - nh)/2 - c->bw;
-	resize(c, nx, ny, nw, nh, True);
-	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, nw/2, nh/2);
+		ny = selmon->wy + (selmon->wh - c->h)/2 - c->bw;
+	resize(c, nx, ny, c->w, c->h, True);
+	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w/2, c->h/2);
 }
 
 void
