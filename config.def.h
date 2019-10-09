@@ -93,40 +93,40 @@ static Key keys[] = {
     /* modifier                     key                 function        argument */
     { MODKEY,                       XK_r,               spawn,          {.v = dmenucmd }        },    // r for run
     { MODKEY,                       XK_Return,          spawn,          {.v = termcmd }         },    // spawn terminal
-    { MODKEY,                       XK_apostrophe,      togglescratch,  {.v = scratchpadcmd }   },    // toggles:    floating terminal
-    { MODKEY|ShiftMask,             XK_space,           togglefloating, {0}                     },    //            floating behaviour
-    { MODKEY|ShiftMask,             XK_Return,          setlayout,      {0}                     },    //            previous layout
-    { MODKEY|ShiftMask,             XK_b,               togglebar,      {0}                     },    //            statusbar
-    { MODKEY,                       XK_m,               focusmaster,    {0}                     },    // master commands:    focus
+    { MODKEY,                       XK_apostrophe,      togglescratch,  {.v = scratchpadcmd }   },    // toggles:           floating terminal
+    { MODKEY|ShiftMask,             XK_space,           togglefloating, {0}                     },    //                    floating behaviour
+    { MODKEY|ShiftMask,             XK_Return,          setlayout,      {0}                     },    //                    previous layout
+    { MODKEY|ShiftMask,             XK_b,               togglebar,      {0}                     },    //                    statusbar
+    { MODKEY,                       XK_m,               focusmaster,    {0}                     },    // master commands:   focus
     { MODKEY,                       XK_space,           zoom,           {0}                     },    //                    promote
     { MODKEY,                       XK_i,               incnmaster,     {.i = +1 }              },    //                    add clients
     { MODKEY|ShiftMask,             XK_i,               incnmaster,     {.i = -1 }              },    //                    decrease clients
-    { MODKEY,                       XK_q,               killclient,     {0}                     },    // kill:    client
-    { MODKEY|ShiftMask,             XK_q,               quit,           {0}                     },    //            Xorg
+    { MODKEY,                       XK_q,               killclient,     {0}                     },    // kill:              client
+    { MODKEY|ShiftMask,             XK_q,               quit,           {0}                     },    //                    Xorg
     { MODKEY,                       XK_t,               setlayout,      {.v = &layouts[0]}      },    // sets layout to:    tiled
-    { MODKEY,                       XK_n,               setlayout,      {.v = &layouts[1]}      },    //            null/floating
-    { MODKEY|ShiftMask,             XK_m,               setlayout,      {.v = &layouts[2]}      },    //            monocle
-    { MODKEY,                       XK_d,               setlayout,      {.v = &layouts[3]}      },    //            deck
-    { MODKEY,                       XK_f,               setlayout,      {.v = &layouts[4]}      },    //            dwindle
-    { MODKEY|ShiftMask,             XK_f,               setlayout,      {.v = &layouts[5]}      },    //            fibonacci
-    { MODKEY,                       XK_plus,            setgaps,        {.i = +5 }              },    // gaps:    increase
-    { MODKEY,                       XK_minus,           setgaps,        {.i = -5 }              },    //        decrease
-    { MODKEY|ShiftMask,             XK_plus,            setgaps,        {.i =  0 }              },    //        reset
+    { MODKEY,                       XK_n,               setlayout,      {.v = &layouts[1]}      },    //                    null/floating
+    { MODKEY|ShiftMask,             XK_m,               setlayout,      {.v = &layouts[2]}      },    //                    monocle
+    { MODKEY,                       XK_d,               setlayout,      {.v = &layouts[3]}      },    //                    deck
+    { MODKEY,                       XK_f,               setlayout,      {.v = &layouts[4]}      },    //                    dwindle
+    { MODKEY|ShiftMask,             XK_f,               setlayout,      {.v = &layouts[5]}      },    //                    fibonacci
+    { MODKEY,                       XK_plus,            setgaps,        {.i = +5 }              },    // gaps:              increase
+    { MODKEY,                       XK_minus,           setgaps,        {.i = -5 }              },    //                    decrease
+    { MODKEY|ShiftMask,             XK_plus,            setgaps,        {.i =  0 }              },    //                    reset
     /*      Dvorak specific bindings                    */
-    { MODKEY,                       XK_comma,           focusstack,     {.i = -1 }              },    // change focus:    up
-    { MODKEY,                       XK_o,               focusstack,     {.i = +1 }              },    //            down
-    { MODKEY,                       XK_aring,           focusmon,       {.i = -1 }              },    //            next monitor
-    { MODKEY,                       XK_period,          focusmon,       {.i = +1 }              },    //            prev monitor
-    { MODKEY|ShiftMask,             XK_comma,           movestack,      {.i = -1 }              },    // move client:        up
-    { MODKEY|ShiftMask,             XK_o,               movestack,      {.i = +1 }              },    //            down
-    { MODKEY|ShiftMask,             XK_aring,           tagmon,         {.i = -1 }              },    //            next monitor
-    { MODKEY|ShiftMask,             XK_period,          tagmon,         {.i = +1 }              },    //            prev monitor
-    { MODKEY,                       XK_a,               setmfact,       {.f = -0.05}            },    // master area:    increase
-    { MODKEY,                       XK_e,               setmfact,       {.f = +0.05}            },    //        decrease
+    { MODKEY,                       XK_comma,           focusstack,     {.i = -1 }              },    // change focus:      up
+    { MODKEY,                       XK_o,               focusstack,     {.i = +1 }              },    //                    down
+    { MODKEY,                       XK_aring,           focusmon,       {.i = -1 }              },    //                    next monitor
+    { MODKEY,                       XK_period,          focusmon,       {.i = +1 }              },    //                    prev monitor
+    { MODKEY|ShiftMask,             XK_comma,           movestack,      {.i = -1 }              },    // move client:       up
+    { MODKEY|ShiftMask,             XK_o,               movestack,      {.i = +1 }              },    //                    down
+    { MODKEY|ShiftMask,             XK_aring,           tagmon,         {.i = -1 }              },    //                    next monitor
+    { MODKEY|ShiftMask,             XK_period,          tagmon,         {.i = +1 }              },    //                    prev monitor
+    { MODKEY,                       XK_a,               setmfact,       {.f = -0.05}            },    // master area:       increase
+    { MODKEY,                       XK_e,               setmfact,       {.f = +0.05}            },    //                    decrease
     /*            Qwerty equivalent                        
     { MODKEY,                       XK_w,               focusstack,     {.i = -1 }              },
     { MODKEY,                       XK_s,               focusstack,     {.i = +1 }              },
-    { MODKEY,                       XK_q,               focusmon,       {.i = -1 }              },     // NB! killclient also assigned to mod+q
+    { MODKEY,                       XK_q,               focusmon,       {.i = -1 }              },    // NB! killclient also assigned to mod+q
     { MODKEY,                       XK_e,               focusmon,       {.i = +1 }              },
     { MODKEY|ShiftMask,             XK_w,               movestack,      {.i = -1 }              },
     { MODKEY|ShiftMask,             XK_s,               movestack,      {.i = +1 }              },
@@ -161,16 +161,16 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_KP_Up,           moveplace,      {.ui = WIN_N  }         },
     { MODKEY|ShiftMask,             XK_KP_Prior,        moveplace,      {.ui = WIN_NE }         },
     { MODKEY,                       XK_j,               moveplace,      {.ui = WIN_C  }         },
-    { MODKEY,                       XK_v,               spawn,          {.v = vifmcmd }         },    // start:    vifm
-    { MODKEY,                       XK_c,               spawn,          {.v = calendarcmd }     },    //        calcurse
-    { MODKEY,                       XK_b,               spawn,          {.v = bitwardencmd }    },    //        bitwarden, handled by dmenu
+    { MODKEY,                       XK_v,               spawn,          {.v = vifmcmd }         },    // start:             vifm
+    { MODKEY,                       XK_c,               spawn,          {.v = calendarcmd }     },    //                    calcurse
+    { MODKEY,                       XK_b,               spawn,          {.v = bitwardencmd }    },    //                    bitwarden (custom script)
     { MODKEY,                       XK_F1,              spawn,          {.v = sleepcmd }        },    // suspend to RAM
     { MODKEY,                       XK_F5,              spawn,          {.v = refreshcmd }      },    // refresh statusbar (custom script)
-    { 0,          XF86XK_AudioRaiseVolume,              spawn,          {.v = &volcmd[0] }      },    // laptop controls:    volume up
-    { 0,          XF86XK_AudioLowerVolume,              spawn,          {.v = &volcmd[1] }      },    //            volume down
-    { 0,                 XF86XK_AudioMute,              spawn,          {.v = &volcmd[2] }      },    //            volume mute
-    { 0,           XF86XK_MonBrightnessUp,              spawn,          {.v = brightcmd[0] }    },    //            brightness up
-    { 0,         XF86XK_MonBrightnessDown,              spawn,          {.v = brightcmd[1] }    },    //            brightness down
+    { 0,          XF86XK_AudioRaiseVolume,              spawn,          {.v = &volcmd[0] }      },    // laptop controls:   volume up
+    { 0,          XF86XK_AudioLowerVolume,              spawn,          {.v = &volcmd[1] }      },    //                    volume down
+    { 0,                 XF86XK_AudioMute,              spawn,          {.v = &volcmd[2] }      },    //                    volume mute
+    { 0,           XF86XK_MonBrightnessUp,              spawn,          {.v = brightcmd[0] }    },    //                    brightness up
+    { 0,         XF86XK_MonBrightnessDown,              spawn,          {.v = brightcmd[1] }    },    //                    brightness down
     { MODKEY,                       XK_Tab,             view,           {0}                     },    // toggles previous tag mask
     { MODKEY,                       XK_0,               view,           {.ui = ~0 }             },    // view all tags
     { MODKEY|ShiftMask,             XK_0,               tag,            {.ui = ~0 }             },    // tag client to all tags
