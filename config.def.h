@@ -75,7 +75,7 @@ static const char *termcmd[]          = { "st", NULL };
 static const char scratchpadname[]    = "floating terminal";
 static const char *scratchpadcmd[]    = { "st", "-t", scratchpadname, "-g", "80x22", NULL };
 static const char *sleepcmd[]         = { "systemctl", "suspend", NULL };
-static const char *refreshcmd[]       = { "refreshstatus", NULL };
+static const char *refreshcmd[]       = { "refreshstatus", NULL };			// custom script for statusbar refresh
 static const char *calendarcmd[]      = { "st", "calcurse", NULL };
 static const char *bitwardencmd[]     = { "bitwarden", NULL };
 static const char *vifmcmd[]          = { "st", "vifmrun", NULL };
@@ -101,18 +101,29 @@ static Key keys[] = {
     { MODKEY,                       XK_space,           zoom,           {0}                     },    //                    promote
     { MODKEY,                       XK_i,               incnmaster,     {.i = +1 }              },    //                    add clients
     { MODKEY|ShiftMask,             XK_i,               incnmaster,     {.i = -1 }              },    //                    decrease clients
-    { MODKEY,                       XK_q,               killclient,     {0}                     },    // kill:              client
-    { MODKEY|ShiftMask,             XK_q,               quit,           {0}                     },    //                    Xorg
+    { MODKEY|ShiftMask,             XK_c,               killclient,     {0}                     },    // kill:              client
+    { MODKEY|ShiftMask,             XK_Delete,          quit,           {0}                     },    //                    Xorg
     { MODKEY,                       XK_t,               setlayout,      {.v = &layouts[0]}      },    // sets layout to:    tiled
     { MODKEY,                       XK_n,               setlayout,      {.v = &layouts[1]}      },    //                    null/floating
     { MODKEY|ShiftMask,             XK_m,               setlayout,      {.v = &layouts[2]}      },    //                    monocle
-    { MODKEY,                       XK_d,               setlayout,      {.v = &layouts[3]}      },    //                    deck
+    { MODKEY|ShiftMask,             XK_d,               setlayout,      {.v = &layouts[3]}      },    //                    deck
     { MODKEY,                       XK_f,               setlayout,      {.v = &layouts[4]}      },    //                    dwindle
     { MODKEY|ShiftMask,             XK_f,               setlayout,      {.v = &layouts[5]}      },    //                    fibonacci
     { MODKEY,                       XK_plus,            setgaps,        {.i = +5 }              },    // gaps:              increase
     { MODKEY,                       XK_minus,           setgaps,        {.i = -5 }              },    //                    decrease
     { MODKEY|ShiftMask,             XK_plus,            setgaps,        {.i =  0 }              },    //                    reset
-    /*      Dvorak specific bindings                    */
+   	/*        Qwerty specific bindings                  */
+    { MODKEY,                       XK_w,               focusstack,     {.i = -1 }              },
+    { MODKEY,                       XK_s,               focusstack,     {.i = +1 }              },
+    { MODKEY,                       XK_q,               focusmon,       {.i = -1 }              },    // NB! killclient also assigned to mod+q
+    { MODKEY,                       XK_e,               focusmon,       {.i = +1 }              },
+    { MODKEY|ShiftMask,             XK_w,               movestack,      {.i = -1 }              },
+    { MODKEY|ShiftMask,             XK_s,               movestack,      {.i = +1 }              },
+    { MODKEY|ShiftMask,             XK_q,               tagmon,         {.i = -1 }              },    // NB! killclient also assigned to mod+q
+    { MODKEY|ShiftMask,             XK_e,               tagmon,         {.i = +1 }              },
+    { MODKEY,                       XK_a,               setmfact,       {.f = -0.05}            },
+    { MODKEY,                       XK_d,               setmfact,       {.f = +0.05}            },
+    /*        Dvorak equivalent
     { MODKEY,                       XK_comma,           focusstack,     {.i = -1 }              },    // change focus:      up
     { MODKEY,                       XK_o,               focusstack,     {.i = +1 }              },    //                    down
     { MODKEY,                       XK_aring,           focusmon,       {.i = -1 }              },    //                    next monitor
@@ -123,17 +134,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_period,          tagmon,         {.i = +1 }              },    //                    prev monitor
     { MODKEY,                       XK_a,               setmfact,       {.f = -0.05}            },    // master area:       increase
     { MODKEY,                       XK_e,               setmfact,       {.f = +0.05}            },    //                    decrease
-    /*            Qwerty equivalent                        
-    { MODKEY,                       XK_w,               focusstack,     {.i = -1 }              },
-    { MODKEY,                       XK_s,               focusstack,     {.i = +1 }              },
-    { MODKEY,                       XK_q,               focusmon,       {.i = -1 }              },    // NB! killclient also assigned to mod+q
-    { MODKEY,                       XK_e,               focusmon,       {.i = +1 }              },
-    { MODKEY|ShiftMask,             XK_w,               movestack,      {.i = -1 }              },
-    { MODKEY|ShiftMask,             XK_s,               movestack,      {.i = +1 }              },
-    { MODKEY|ShiftMask,             XK_q,               tagmon,         {.i = -1 }              },    // NB! killclient also assigned to mod+q
-    { MODKEY|ShiftMask,             XK_e,               tagmon,         {.i = +1 }              },
-    { MODKEY,                       XK_a,               setmfact,       {.f = -0.05}            },
-    { MODKEY,                       XK_d,               setmfact,       {.f = +0.05}            },    */
+	*/
     { MODKEY,                       XK_Up,              moveresize,     {.v = (int []){   0, -20,   0,   0 }}   },    // move focused floating window
     { MODKEY,                       XK_Down,            moveresize,     {.v = (int []){   0,  20,   0,   0 }}   },    
     { MODKEY,                       XK_Right,           moveresize,     {.v = (int []){  20,   0,   0,   0 }}   },
