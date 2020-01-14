@@ -3,9 +3,6 @@ My configuration of dwm
 dwm, dynamic window manager, is a tiling window manager created by the team over at [suckless.org](https://suckless.org/) for X.
 My configuration changes the default key bindings and add functionality through patches gotten from the [patches section](https://dwm.suckless.org/patches/) over at their website.
 
-You might find the key bindings to be weird and seemingly randomly placed; this is because my keyboard uses a norwegian-dvorak layout. 
-Comments have been added to some of the bindings to make them more qwerty-friendly; other bindings are set based on which command they execute (mod+t for Tiling mode).
-
 Requirements
 ------------
 dwm requires the Xlib header package and make to compile, the laptop xf86 keys use pamixer and light to change audio and screen brightness.
